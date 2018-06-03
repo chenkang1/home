@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./jquery-easyui-1.5.5.2/themes/icon.css">
+    <link rel="stylesheet" href="./jquery-easyui-1.5.5.2/themes/bootstrap/easyui.css">
+</head>
+
+<body>
+    <h1>one</h1>
+    密码:
+    <input id="pwd" name="pwd" type="password" class="easyui-validatebox" data-options="required:true" /> 确认密码:
+    <input id="rpwd" name="rpwd" type="password" class="easyui-validatebox" required="required" validType="equals['#pwd']" />
+    <br>
+    <h1>two</h1>
+    <select name="" id="ccc" style="width: 100px;">
+        <option value="1">语文</option>
+        <option value="2">数学</option>
+        <option value="3">英语</option>
+        <option value="4">地理</option>
+        <option value="5">生物</option>
+        <option value="6">化学</option>
+        <option value="7">政治</option>
+        <option value="8">历史</option>
+        <option value="9">物理</option>
+        <option value="10">音乐</option>
+    </select>
+    <h1>three</h1>
+    <div id="cc" class="easyui-layout" style="width:600px;height:400px;">
+        <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
+        <div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>
+        <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;"></div>
+        <div data-options="region:'west',title:'West',split:true" style="width:100px;"></div>
+        <div data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;"></div>
+    </div>
+    <h1>four</h1>
+    <div id="tt" class="easyui-tabs" style="width:500px;height:250px;border:1px solid red;">
+        <div title="Tab1" data-options="iconCls:'icon-search'" style="padding:20px;display:none;">
+            tab1111111111111111111111111111111111111111111111111111111111
+        </div>
+        <div title="Tab2" data-options="iconCls:'icon-ok',closable:true" style="overflow:auto;padding:20px;display:none;">
+            tab2222222222222222222222222222222222222222222222222222222222
+        </div>
+        <div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">
+            tab33333333333333333333333333333333333333333333333333333333333333
+        </div>
+    </div>
+    <h1>five</h1>
+    <div id="dd">Dialog Content.</div>
+
+    <input id="ss"></input>
+    <div id="mm" style="width:120px">
+        <div data-options="name:'all',iconCls:'icon-ok'">All News</div>
+        <div data-options="name:'sports'">Sports News</div>
+    </div>
+
+    <h1>six</h1>
+    <div id="ddw" style="width:100px;height:100px;">
+        <div id="title" style="background:#ccc;">title</div>
+    </div>
+
+
+
+
+    <script src="./jquery-easyui-1.5.5.2/jquery.min.js"></script>
+    <script src="./jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
+    <script src="./jquery-easyui-1.5.5.2/locale/easyui-lang-zh_CN.js"></script>
+    <script>
+        $.extend($.fn.validatebox.defaults.rules, {
+            equals: {
+                validator: function (value, param) {
+                    return value == $(param[0]).val();
+                },
+                message: 'Field do not match.'
+            }
+        });
+
+        $('#ccc').combobox({
+            valueField: 'id',
+            textField: 'text',
+        });
+
+        $('#tt').tabs({
+            border: false,
+            onSelect: function (title) {
+                // alert(title + ' is selected');
+            }
+        });
+
+        $('#dd').dialog({
+            title: 'My Dialog',
+            width: 400,
+            height: 200,
+            closed: false,
+            cache: false,
+            href: 'get_content.php',
+            modal: true
+        });
+        $('#dd').dialog('refresh', 'new_content.php');
+
+
+        $('#ss').searchbox({
+            searcher: function (value, name) {
+                alert(value + "," + name)
+            },
+            menu: '#mm',
+            prompt: 'Please Input Value'
+        });
+
+        $('#ddw').draggable({
+            handle: '#title'
+        });
+
+    </script>
+
+</body>
+
+</html>
